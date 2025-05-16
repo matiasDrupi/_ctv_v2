@@ -123,6 +123,11 @@
 <script>
 const webhookUrl = 'https://hook.us2.make.com/pqoiih7a4o05b6wtukb9xfs847ygpq20';
 
+// Función para limpiar saltos de línea y caracteres de control
+function sanitizeText(text) {
+    return text.replace(/(\r\n|\n|\r)/g, ' ').trim();
+}
+
 function generateId() {
     return Math.floor(100000 + Math.random() * 900000).toString();
 }
@@ -141,15 +146,15 @@ document.getElementById('formulario').addEventListener('submit', async function(
     const form = e.target;
     const formData = new FormData();
 
-    formData.append('email', form.email.value.trim());
-    formData.append('linkVideo', form.linkVideo.value.trim());
-    formData.append('caption', form.caption.value.trim());
-    formData.append('datos', form.datos.value.trim());
+    formData.append('email', sanitizeText(form.email.value));
+    formData.append('linkVideo', sanitizeText(form.linkVideo.value));
+    formData.append('caption', sanitizeText(form.caption.value));
+    formData.append('datos', sanitizeText(form.datos.value));
     formData.append('botonVideo', form.botonVideo.value);
     formData.append('uniqueId', uniqueId);
 
     if (form.botonVideo.value === 'Sí') {
-        formData.append('botonTexto', form.botonTexto.value.trim());
+        formData.append('botonTexto', sanitizeText(form.botonTexto.value));
     } else {
         formData.append('botonTexto', '');
     }
