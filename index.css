@@ -9,6 +9,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
+}
+
+@media (min-width: 601px) {
+  body {
+    overflow-y: hidden;
+  }
 }
 
 /* === Header === */
@@ -20,24 +27,34 @@ header {
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   width: 90%;
-  position: relative;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .logo {
-  position: absolute;
-  left: 0;
+  position: static;
+  flex-shrink: 0;
 }
 
 header h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 600;
   flex-grow: 1;
   text-align: center;
   width: 100%;
+  color: #0c0c0ce0;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 30px;
+  }
 }
 
 /* === Contenedor principal === */
@@ -46,15 +63,16 @@ header h1 {
   border: 1px solid #f0f0f0;
   padding-right: 26px;
   padding-left: 26px;
-  padding-top: 28px;
-  padding-bottom: 14px;
-  margin-top: 1.5rem;
+  padding-top: 26px;
+  padding-bottom: 8px;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
   position: relative;
-  color: #1F1F1F;
+  color: #333;
 }
 
 /* === Formularios === */
@@ -110,6 +128,19 @@ button:hover {
   filter: brightness(1.1);
 }
 
+@media (max-width: 600px) {
+
+  label,
+  select,
+  input {
+    font-size: 16.5px;
+  }
+
+  textarea {
+    font-size: 16px;
+  }
+}
+
 /* === Campo de texto oculto === */
 #botonTextoContainer {
   max-height: 0;
@@ -126,9 +157,10 @@ button:hover {
 
 /* === ID generado === */
 #uniqueId {
-  text-align: right;
-  font-size: 12px;
   color: #555;
+  font-size: 10px;
+  text-align: right;
+
 }
 
 /* === Botón upload === */
