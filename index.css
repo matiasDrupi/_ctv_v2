@@ -3,6 +3,16 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 /* === Reset y cuerpo === */
 body {
   margin: 0;
@@ -10,12 +20,6 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-}
-
-@media (min-width: 601px) {
-  body {
-    overflow-y: hidden;
-  }
 }
 
 /* === Header === */
@@ -74,6 +78,14 @@ header h1 {
   position: relative;
   color: #333;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
 
 /* === Formularios === */
 label,
@@ -172,7 +184,7 @@ button:hover {
 .custom-file-label {
   font-size: 12px;
   border: 1px solid #2563EB;
-  color: #0c0c0ce0;
+  color: #434343e0;
   padding: 10px 0;
   border-radius: 6px;
   text-align: center;
@@ -198,11 +210,12 @@ button:hover {
   margin: 0;
 }
 
+/* Switch Container */
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px;
+  height: 25px;
   margin: 0px;
 }
 
@@ -212,6 +225,7 @@ button:hover {
   height: 0;
 }
 
+/* Slider Background */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -220,22 +234,23 @@ button:hover {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
+/* Slider Circle */
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 22px;
+  width: 22px;
   background-color: white;
-  -webkit-transition: .4s;
+  top: 50%;
+  left: 1.5px;
+  transform: translateY(-50%);
   transition: .4s;
 }
 
+/* Slider States */
 input:checked+.slider {
   background-color: #3B82F6;
 }
@@ -245,11 +260,10 @@ input:focus+.slider {
 }
 
 input:checked+.slider:before {
-  -webkit-transform: translateX(21px);
-  -ms-transform: translateX(21px);
-  transform: translateX(21px);
+  transform: translate(18px, -50%);
 }
 
+/* Rounded Modifier */
 .slider.round {
   border-radius: 34px;
 }
@@ -257,6 +271,7 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 
 /* === Message === */
 #toastContainer {
